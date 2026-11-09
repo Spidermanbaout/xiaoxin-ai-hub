@@ -153,7 +153,7 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
   <a class="brand" href="#top"><span class="dot"></span>小新AI资讯工具站</a>
   <nav>
     <a href="#news">资讯速览</a><a href="#tools">工具导航</a><a href="#deals">羊毛雷达</a>
-    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#submit">参赛提交包</a>
+    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a>
   </nav>
 </div></header>
 
@@ -168,7 +168,6 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
       <div class="hero-cta">
         <a class="btn red" href="#news">看今日资讯</a>
         <a class="btn ghost" href="#workshop">打开提示词工坊</a>
-        <a class="btn ghost" href="#submit">参赛提交包</a>
       </div>
       <div class="stats">
         <div class="stat"><b>9 条</b><span>本期精选资讯（11月2日–8日）</span></div>
@@ -463,63 +462,6 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
   </section>
 
   <!-- SUBMIT PACK -->
-  <section id="submit">
-    <div class="sec-head"><span class="no">06</span><h2>参赛提交包</h2></div>
-    <p class="sec-sub">提交到 Devpost 时直接复制下面的文案：英文版是给评审看的正式稿，中文版供你自己核对。提交步骤在最后。</p>
-    <div class="pack">
-      <article class="card">
-        <span class="tag red">项目名称 · Devpost Title</span>
-        <pre id="packTitle">Xiaoxin AI News &amp; Tools Hub（小新AI资讯工具站）</pre>
-        <div class="row"><button class="btn sm ghost" data-copy="packTitle" type="button">复制</button></div>
-      </article>
-      <article class="card">
-        <span class="tag red">一句话介绍 · Tagline</span>
-        <pre id="packTag">A Chinese-language AI news &amp; free-tools hub for everyday users and creators: curated weekly AI briefings across 5 categories, a free-tier radar (US platforms first), a 12-tool navigator, plus two working creator utilities — a prompt workshop and a short-video title generator.</pre>
-        <div class="row"><button class="btn sm ghost" data-copy="packTag" type="button">复制英文</button></div>
-      </article>
-      <article class="card full">
-        <span class="tag red">详细介绍 · Project Story（英文，粘贴到 Devpost 正文）</span>
-        <pre id="packStory">## Inspiration
-AI news moves too fast for everyday users in China: model launches, open-source drops and free-tier changes are scattered across dozens of sources, and most roundups are either too technical or pure hype. As an AI-education creator on Douyin, I built the hub I wished existed — one page that answers three questions: What happened this week? Which tools can I actually use for free? And how do I turn this into my next video?
-
-## What it does
-- **Weekly AI Briefing** — curated news (Nov 2–8, 2026 edition) across five fixed categories: Large Models, Products &amp; Tools, Industry &amp; Companies, Open Source, and Policy &amp; Applications. Every item links to its original source so readers can verify.
-- **Free-Tier Radar (“羊毛雷达”)** — free API tiers, signup credits and limited offers, with US platforms listed first, expiry and card-requirement notes, and “no free tier” warnings to save users from dead-end signups.
-- **Tool Navigator** — 16 AI tools (ChatGPT, Claude, Gemini, Grok, DeepSeek, Kimi, Kiro, Cursor, Hugging Face, Midjourney, Suno, Perplexity, Code Link, AgentRouter, ZCode, WorkBuddy) with honest free-plan limits, searchable and filterable by use case, plus a side-by-side free-plan comparison of the big three assistants.
-- **Prompt Workshop** — pick a scenario (short-video script, topic planning, copy polishing, plain-language explainer, summarizer), add a topic and tone, and get a structured four-part prompt ready to paste into any AI chat.
-- **Title Generator** — enter a keyword and get 8 short-video titles built from hook / number / contrast / pitfall structures that work for AI-education accounts.
-
-## How I built it
-A single self-contained HTML page (HTML + CSS + vanilla JavaScript, no build step, no backend). Editorial newspaper-style design with a custom illustrated hero, full light/dark support via prefers-color-scheme, responsive layout that stacks cleanly on phones, and all interactions (category filters, live search, prompt assembly, title generation, copy-to-clipboard) running client-side.
-
-## Challenges
-Keeping every fact honest: free-tier limits and news items were verified against vendor pricing pages and original reports during the build, and the page is labeled as a dated snapshot (Nov 8, 2026) instead of pretending to be live data.
-
-## What I learned
-Structuring prompts as role + task + constraints + output format dramatically improves results for non-technical users — the Prompt Workshop encodes that lesson as a reusable tool.</pre>
-        <div class="row"><button class="btn sm ghost" data-copy="packStory" type="button">复制全文</button></div>
-      </article>
-      <article class="card">
-        <span class="tag">技术栈 · Built with</span>
-        <pre id="packTech">HTML5 · CSS3 (custom properties, prefers-color-scheme) · Vanilla JavaScript · Google Fonts (Noto Sans SC / Noto Serif SC)</pre>
-        <div class="row"><button class="btn sm ghost" data-copy="packTech" type="button">复制</button></div>
-      </article>
-      <article class="card">
-        <span class="tag">中文核对版 · 一句话</span>
-        <pre>小新AI资讯工具站：给普通人和创作者的中文 AI 情报站——五分类周度资讯（每条附原文出处）、美国平台优先的免费额度雷达、16 个工具的免费版实测导航，外加提示词工坊和短视频选题助手两个能直接干活的在线工具。</pre>
-      </article>
-      <div class="full">
-        <h3 style="margin:8px 0 12px;font-size:19px">提交步骤（Devpost）</h3>
-        <div class="steps">
-          <div class="step"><p><b>打开 Devpost 上的 Kiro 黑客松页面</b>，用你已报名的账号进入「Enter a submission / 提交作品」。（报名此前已完成，不受 credits 申请影响。）</p></div>
-          <div class="step"><p><b>填基本信息：</b>项目名称、一句话介绍、详细介绍依次复制上方提交包里的英文文案；Built with 填技术栈那一项。</p></div>
-          <div class="step"><p><b>填作品链接：</b>把本站发布后的链接粘到 Website / Demo URL 一栏；如果表单要求代码仓库，可把本站的单个 index.html 上传到你的 GitHub 仓库后填仓库链接。</p></div>
-          <div class="step"><p><b>传一张封面图：</b>用本站顶部的奶娃主播插画即可（本站 assets 里的 hero 图），或截一张首页图上传。</p></div>
-          <div class="step"><p><b>检查后点 Submit。</b>提交后留意邮箱：如需补充演示视频，可用手机录 1 分钟屏录，照着「资讯筛选 → 搜工具 → 生成提示词 → 生成标题」的顺序点一遍即可。</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <p>小新AI资讯工具站 · 本页资讯为 2026 年 11 月 8 日整理的快照，来源：SegmentFault AI 日报、财经网、CSDN 资讯日报、新浪财经（新华社）、O'Reilly Radar、BenchLeader 免费额度对照、AI Credit Radar 等公开报道；工具免费额度整理自各厂商定价页与 2026 年 10–11 月公开对比评测，政策变化快，充值或绑卡前请以官网为准。</p>
