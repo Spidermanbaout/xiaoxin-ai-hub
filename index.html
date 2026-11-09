@@ -165,7 +165,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     <a href="#news">资讯速览</a><a href="#tools">工具导航</a><a href="#deals">羊毛雷达</a>
     <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#hot">抖音热点</a><a href="#script">脚本大纲</a><a href="#calc">额度计算器</a>
   </nav>
-  <div class="auth-wrap"><span id="authUser" class="hint" style="display:none"></span><button class="btn sm ghost" id="authBtn" type="button">登录 / 注册</button><button class="btn sm ghost" id="logoutBtn" type="button" style="display:none">登出</button></div>
+  <div class="auth-wrap"><span id="authUser" class="hint" style="display:none"></span><button class="btn sm ghost" id="authBtn" type="button">登录</button><button class="btn sm ghost" id="logoutBtn" type="button" style="display:none">登出</button></div>
 </div></header>
 
 <main class="wrap" id="top">
@@ -546,10 +546,10 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
 
 <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
   <div class="modal-box">
-    <h3 id="authTitle">登录 / 注册</h3>
+    <h3 id="authTitle">登录</h3>
     <div class="tabs" style="display:flex;gap:8px;margin-bottom:12px">
       <button class="btn sm" id="tabLogin" type="button">登录</button>
-      <button class="btn sm ghost" id="tabRegister" type="button">注册</button>
+      <button class="btn sm ghost" id="tabRegister" type="button" style="display:none">注册</button>
     </div>
     <input class="inp" id="authUsername" type="text" placeholder="用户名（3–32 个字符）" autocomplete="username">
     <input class="inp" id="authPassword" type="password" placeholder="密码（至少 6 位）" autocomplete="current-password">
@@ -559,7 +559,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
       <button class="btn red" id="authSubmit" type="button">登录</button>
       <button class="btn ghost" id="authClose" type="button">关闭</button>
     </div>
-    <p class="hint" style="margin-top:10px">注册需邀请码，由站长发放；登录后才能用站上的 AI 功能，资讯、工具、羊毛不登录也能看。</p>
+    <p class="hint" style="margin-top:10px">注册暂未开放，目前仅管理员账号可登录；登录后才能用站上的 AI 功能，资讯、工具、羊毛不登录也能看。</p>
     <div id="adminBox" style="display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px">
       <p class="hint">管理员：生成邀请码</p>
       <div class="row">
@@ -626,6 +626,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   function closeAuthModal() { authModal.classList.remove('open'); var e = document.getElementById('authErr'); if (e) e.style.display = 'none'; }
   function showAuthErr(msg) { var e = document.getElementById('authErr'); e.style.display = ''; e.textContent = msg; }
   function setAuthMode(m) {
+    if (m === 'register') { showAuthErr('注册暂未开放'); m = 'login'; }
     authMode = m;
     document.getElementById('authInvite').style.display = m === 'register' ? '' : 'none';
     document.getElementById('authSubmit').textContent = m === 'register' ? '注册' : '登录';
