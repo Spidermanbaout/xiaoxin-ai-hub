@@ -134,6 +134,16 @@ textarea.out{min-height:220px;resize:vertical;line-height:1.75;font-size:14.5px;
 .step b{color:var(--ink)}
 
 footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color:var(--muted);font-size:13.5px}
+.auth-wrap{display:flex;align-items:center;gap:8px}
+.modal{position:fixed;inset:0;background:rgba(22,19,14,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal.open{display:flex}
+.modal-box{background:var(--surface);border:2px solid var(--ink);border-radius:18px;box-shadow:6px 6px 0 var(--ink);padding:22px;max-width:440px;width:100%;max-height:90vh;overflow:auto}
+.modal-box h3{margin-bottom:12px}
+.modal-box .inp{margin-bottom:10px}
+.hot-list{margin:0;padding-left:20px}
+.hot-list li{margin:8px 0}
+table.calc{width:100%;border-collapse:collapse;font-size:14.5px}
+table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);background:var(--ink);color:var(--bg);font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:999px;z-index:99;transition:transform .25s;box-shadow:var(--shadow)}
 .toast.show{transform:translate(-50%,0)}
 @media (max-width:860px){
@@ -153,8 +163,9 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
   <a class="brand" href="#top"><span class="dot"></span>小新AI资讯工具站</a>
   <nav>
     <a href="#news">资讯速览</a><a href="#tools">工具导航</a><a href="#deals">羊毛雷达</a>
-    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a>
+    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#hot">抖音热点</a><a href="#script">脚本大纲</a><a href="#calc">额度计算器</a>
   </nav>
+  <div class="auth-wrap"><span id="authUser" class="hint" style="display:none"></span><button class="btn sm ghost" id="authBtn" type="button">登录 / 注册</button><button class="btn sm ghost" id="logoutBtn" type="button" style="display:none">登出</button></div>
 </div></header>
 
 <main class="wrap" id="top">
@@ -191,6 +202,13 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
       <button class="fbtn" data-f="open" aria-pressed="false">开源项目</button>
       <button class="fbtn" data-f="policy" aria-pressed="false">政策应用</button>
     </div>
+
+    <div class="searchbox" id="aiSearchBox">
+      <input id="aiSearch" type="search" placeholder="AI 搜资讯：输入问题，如「本周有哪些免费 API」…" aria-label="AI 搜索资讯">
+      <button class="btn sm" id="aiSearchBtn" type="button">AI 搜索</button>
+      <button class="btn sm ghost" id="aiSearchReset" type="button" style="display:none">恢复原序</button>
+    </div>
+    <p class="hint" id="aiSearchHint" style="display:none"></p>
 
     <article class="featured" data-cat="model">
       <span class="tag">头条 · 大模型 / 开源</span>
@@ -257,6 +275,14 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
     </div>
     <div class="empty" id="newsEmpty">这个分类本期暂时没有条目，看看其他分类。</div>
   </section>
+
+  <!-- HOT_START -->
+  <section id="hot">
+    <div class="sec-head"><h2>抖音热点榜</h2></div>
+    <p class="sec-sub">来自每天 08:00 AI 情报简报的抖音热点与活动；规则、奖励数字以抖音 App 内话题页为准。</p>
+    <p class="hint">今日暂无</p>
+  </section>
+  <!-- HOT_END -->
 
   <!-- TOOLS -->
   <section id="tools">
@@ -451,13 +477,63 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
   <!-- TITLES -->
   <section id="titles">
     <div class="sec-head"><span class="no">05</span><h2>选题助手</h2></div>
-    <p class="sec-sub">输入一个关键词，按抖音 AI 教学类账号验证过的标题结构出 8 条标题——钩子型、数字型、对比型、避坑型都有，点「复制」直接拿去用，再按你的口吻改。</p>
+    <p class="sec-sub">输入一个关键词，按抖音 AI 教学类账号验证过的标题结构出 8 条标题——钩子型、数字型、对比型、避坑型都有，点「复制」直接拿去用，再按你的口吻改。AI 生成，需登录；网关不可用时可退回离线模板。</p>
     <div class="panel">
       <div class="row">
         <input class="inp" id="tKw" type="text" placeholder="输入关键词，例：免费AI工具 / 大模型 / 提示词" style="flex:1;min-width:200px">
         <button class="btn red" id="tGen" type="button">生成 8 条标题</button>
       </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn ghost sm" id="tOffline" type="button" style="display:none">离线模板生成</button>
+        <span class="hint">AI 生成，需登录；网关连续失败时可用离线模板（非 AI 生成）。</span>
+      </div>
+      <p class="hint" id="tErr" style="color:var(--red);display:none"></p>
       <div class="titles" id="tList"></div>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+  <section id="script">
+    <div class="sec-head"><span class="no">06</span><h2>视频脚本大纲生成器</h2></div>
+    <p class="sec-sub">输入主题和风格，AI 生成一条 30–45 秒短视频的脚本大纲（开场钩子、3 个要点、结尾号召）。需登录；失败只显示错误，不编造内容。</p>
+    <div class="panel">
+      <div class="form-grid" style="grid-template-columns:2fr 1fr">
+        <div><label class="fl" for="sTopic">主题</label>
+          <input class="inp" id="sTopic" type="text" placeholder="例：免费 AI 工具怎么选"></div>
+        <div><label class="fl" for="sTone">风格</label>
+          <select class="inp" id="sTone">
+            <option value="通俗易懂">通俗易懂</option>
+            <option value="节奏快、信息密度高">节奏快、信息密度高</option>
+            <option value="幽默风趣、带一点梗">幽默风趣、带一点梗</option>
+            <option value="严谨专业、数据说话">严谨专业、数据说话</option>
+          </select></div>
+      </div>
+      <div class="row">
+        <button class="btn red" id="sGen" type="button">生成脚本大纲</button>
+        <button class="btn ghost" id="sCopy" type="button">复制大纲</button>
+        <span class="hint">AI 生成，需登录</span>
+      </div>
+      <textarea class="out" id="sOut" readonly aria-label="生成的脚本大纲" placeholder="生成的大纲会显示在这里"></textarea>
+      <p class="hint" id="sErr" style="color:var(--red);display:none"></p>
+    </div>
+  </section>
+
+  <!-- CALC -->
+  <section id="calc">
+    <div class="sec-head"><h2>免费额度计算器</h2></div>
+    <p class="sec-sub">纯前端计算，不调接口、不登录也能用。数据与 03 节羊毛雷达一致（2026 年 11 月 2–3 日核对的官方页面）；政策变化快，领取前请以官网为准。</p>
+    <div class="panel">
+      <div class="form-grid" style="grid-template-columns:1fr 1fr">
+        <div><label class="fl" for="cCalls">每月 API 调用次数</label>
+          <input class="inp" id="cCalls" type="number" min="0" value="500"></div>
+        <div><label class="fl" for="cImages">每月生成图片 / 歌曲张数</label>
+          <input class="inp" id="cImages" type="number" min="0" value="0"></div>
+      </div>
+      <div class="row">
+        <button class="btn red" id="cCalc" type="button">算一下</button>
+        <span class="hint">免费额度内均为 $0；超出部分请看官网付费价</span>
+      </div>
+      <div id="cOut" style="margin-top:14px"></div>
     </div>
   </section>
 
@@ -467,6 +543,34 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
     <p>小新AI资讯工具站 · 本页资讯为 2026 年 11 月 8 日整理的快照，来源：SegmentFault AI 日报、财经网、CSDN 资讯日报、新浪财经（新华社）、O'Reilly Radar、BenchLeader 免费额度对照、AI Credit Radar 等公开报道；工具免费额度整理自各厂商定价页与 2026 年 10–11 月公开对比评测，政策变化快，充值或绑卡前请以官网为准。</p>
   </footer>
 </main>
+
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal-box">
+    <h3 id="authTitle">登录 / 注册</h3>
+    <div class="tabs" style="display:flex;gap:8px;margin-bottom:12px">
+      <button class="btn sm" id="tabLogin" type="button">登录</button>
+      <button class="btn sm ghost" id="tabRegister" type="button">注册</button>
+    </div>
+    <input class="inp" id="authUsername" type="text" placeholder="用户名（3–32 个字符）" autocomplete="username">
+    <input class="inp" id="authPassword" type="password" placeholder="密码（至少 6 位）" autocomplete="current-password">
+    <input class="inp" id="authInvite" type="text" placeholder="邀请码（注册必填，格式 XXXX-XXXX-XXXX）" style="display:none">
+    <p class="hint" id="authErr" style="color:var(--red);display:none"></p>
+    <div class="row">
+      <button class="btn red" id="authSubmit" type="button">登录</button>
+      <button class="btn ghost" id="authClose" type="button">关闭</button>
+    </div>
+    <p class="hint" style="margin-top:10px">注册需邀请码，由站长发放；登录后才能用站上的 AI 功能，资讯、工具、羊毛不登录也能看。</p>
+    <div id="adminBox" style="display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px">
+      <p class="hint">管理员：生成邀请码</p>
+      <div class="row">
+        <input class="inp" id="adminInviteCount" type="number" min="1" max="50" value="1" style="width:90px">
+        <button class="btn sm" id="adminGenInvites" type="button">生成邀请码</button>
+      </div>
+      <textarea class="out" id="adminInvitesOut" readonly style="min-height:80px" placeholder="生成的邀请码会显示在这里"></textarea>
+      <p class="hint" id="adminStats"></p>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast" role="status">已复制</div>
 
@@ -480,6 +584,103 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
     else{fallback();}
     function fallback(){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){showToast('复制失败，请长按手动复制');}document.body.removeChild(ta);}
   }
+
+  /* ---- AI 网关 + 登录 ---- */
+  // 网关尚未部署：部署后由协调方填入实际地址（绝不要自己编 workers.dev 子域名）。
+  const GATEWAY_URL = 'https://xiaoxin-gateway.REPLACE-ME.workers.dev';
+  const SESSION_KEY = 'xiaoxin_session';
+  var session = null;
+  try { session = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch (e) { session = null; }
+  function saveSession(s) {
+    session = s;
+    try { if (s) localStorage.setItem(SESSION_KEY, JSON.stringify(s)); else localStorage.removeItem(SESSION_KEY); } catch (e) {}
+    updateAuthUI();
+  }
+  function authHeaders() {
+    var h = { 'Content-Type': 'application/json' };
+    if (session && session.token) h['Authorization'] = 'Bearer ' + session.token;
+    return h;
+  }
+  function api(path, opts) {
+    opts = opts || {};
+    if (GATEWAY_URL.indexOf('REPLACE-ME') > -1) return Promise.resolve({ ok: false, error: '网关尚未部署：GATEWAY_URL 待协调方填入实际地址' });
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 30000);
+    return fetch(GATEWAY_URL + path, { method: opts.method || 'GET', headers: authHeaders(), body: opts.body ? JSON.stringify(opts.body) : undefined, signal: ctrl.signal })
+      .then(function (r) { clearTimeout(timer); return r.json().catch(function () { return { ok: false, error: '网关返回异常（HTTP ' + r.status + '）' }; }); })
+      .catch(function (e) { clearTimeout(timer); return { ok: false, error: (e && e.name === 'AbortError') ? '请求超时（30 秒），请重试' : '网络错误：' + ((e && e.message) || '无法连接网关') }; });
+  }
+  function requireLogin() { if (session && session.token) return true; showToast('请先登录'); openAuthModal(); return false; }
+  var authBtn = document.getElementById('authBtn'), logoutBtn = document.getElementById('logoutBtn'), authUser = document.getElementById('authUser');
+  function updateAuthUI() {
+    var logged = !!(session && session.token);
+    authUser.style.display = logged ? '' : 'none';
+    authUser.textContent = logged ? ('已登录：' + (session.username || '')) : '';
+    authBtn.style.display = logged ? 'none' : '';
+    logoutBtn.style.display = logged ? '' : 'none';
+    var box = document.getElementById('adminBox'); if (box) box.style.display = (logged && session.isAdmin) ? '' : 'none';
+  }
+  var authMode = 'login';
+  var authModal = document.getElementById('authModal');
+  function openAuthModal() { authModal.classList.add('open'); }
+  function closeAuthModal() { authModal.classList.remove('open'); var e = document.getElementById('authErr'); if (e) e.style.display = 'none'; }
+  function showAuthErr(msg) { var e = document.getElementById('authErr'); e.style.display = ''; e.textContent = msg; }
+  function setAuthMode(m) {
+    authMode = m;
+    document.getElementById('authInvite').style.display = m === 'register' ? '' : 'none';
+    document.getElementById('authSubmit').textContent = m === 'register' ? '注册' : '登录';
+    document.getElementById('tabLogin').className = 'btn sm' + (m === 'login' ? '' : ' ghost');
+    document.getElementById('tabRegister').className = 'btn sm' + (m === 'register' ? '' : ' ghost');
+  }
+  function loadAdminStats() {
+    api('/api/admin/stats').then(function (res) {
+      var el = document.getElementById('adminStats');
+      if (el) el.textContent = (res && res.ok) ? ('注册用户 ' + res.users + ' 人 · 未用邀请码 ' + res.invitesUnused + ' 个 · 已用 ' + res.invitesUsed + ' 个') : '';
+    });
+  }
+  authBtn.addEventListener('click', function () { setAuthMode('login'); openAuthModal(); });
+  document.getElementById('authClose').addEventListener('click', closeAuthModal);
+  authModal.addEventListener('click', function (e) { if (e.target === authModal) closeAuthModal(); });
+  document.getElementById('tabLogin').addEventListener('click', function () { setAuthMode('login'); });
+  document.getElementById('tabRegister').addEventListener('click', function () { setAuthMode('register'); });
+  document.getElementById('authSubmit').addEventListener('click', function () {
+    var u = document.getElementById('authUsername').value.trim();
+    var p = document.getElementById('authPassword').value;
+    var code = document.getElementById('authInvite').value.trim();
+    if (u.length < 3 || u.length > 32) { showAuthErr('用户名需为 3–32 个字符'); return; }
+    if (p.length < 6) { showAuthErr('密码至少 6 位'); return; }
+    if (authMode === 'register' && !code) { showAuthErr('注册需填写邀请码'); return; }
+    var btn = this; btn.disabled = true; btn.textContent = '提交中…';
+    var path = authMode === 'register' ? '/api/register' : '/api/login';
+    var body = authMode === 'register' ? { username: u, password: p, inviteCode: code } : { username: u, password: p };
+    api(path, { method: 'POST', body: body }).then(function (res) {
+      btn.disabled = false; btn.textContent = authMode === 'register' ? '注册' : '登录';
+      if (res && res.ok && res.token) {
+        saveSession({ token: res.token, username: u, isAdmin: !!res.isAdmin });
+        closeAuthModal(); showToast(authMode === 'register' ? '注册成功，欢迎' : '登录成功，欢迎回来');
+        if (res.isAdmin) loadAdminStats();
+      } else { showAuthErr((res && res.error) || '登录失败，请重试'); }
+    });
+  });
+  logoutBtn.addEventListener('click', function () {
+    api('/api/logout', { method: 'POST' }).then(function () { saveSession(null); showToast('已登出'); });
+  });
+  document.getElementById('adminGenInvites').addEventListener('click', function () {
+    var n = parseInt(document.getElementById('adminInviteCount').value, 10) || 1;
+    api('/api/admin/invites', { method: 'POST', body: { count: n } }).then(function (res) {
+      if (res && res.ok) { document.getElementById('adminInvitesOut').value = res.codes.join('\n'); showToast('邀请码已生成'); loadAdminStats(); }
+      else showToast((res && res.error) || '生成失败');
+    });
+  });
+  // 页面加载时校验本地 session；只有网关明确说“未登录”才清除本地 token，
+  // 网络/未部署等原因不断然登出。
+  if (session && session.token) {
+    api('/api/me').then(function (res) {
+      if (res && res.ok) { session.username = res.username; session.isAdmin = !!res.isAdmin; saveSession(session); if (res.isAdmin) loadAdminStats(); }
+      else if (res && res.error === '未登录') { saveSession(null); }
+    });
+  }
+  updateAuthUI();
 
   /* news filter */
   var nf=document.getElementById('newsFilters');
@@ -536,7 +737,7 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
   document.getElementById('pTopic').addEventListener('input',genPrompt);
   genPrompt();
 
-  /* title generator */
+  /* title generator (AI) */
   var titleTpl=[
     function(k){return '99%的人都不知道，'+k+'还能这样用';},
     function(k){return k+'的正确打开方式，3分钟学会';},
@@ -548,21 +749,121 @@ footer{margin-top:44px;border-top:2px solid var(--ink);padding:22px 0 40px;color
     function(k){return '零基础必看：'+k+'保姆级教程来了';}
   ];
   var tList=document.getElementById('tList');
-  function genTitles(){
-    var kw=document.getElementById('tKw').value.trim();
-    if(!kw){showToast('先输入一个关键词');document.getElementById('tKw').focus();return;}
+  var tErr=document.getElementById('tErr');
+  var gatewayFails=0; // 网关连续失败计数；>=2 才显示离线模板按钮
+  function renderTitleList(titles,label){
     tList.innerHTML='';
-    titleTpl.forEach(function(fn){
-      var text=fn(kw);
+    if(label){var note=document.createElement('p');note.className='hint';note.textContent=label;tList.appendChild(note);}
+    titles.forEach(function(txt){
       var div=document.createElement('div');div.className='title-item';
-      var span=document.createElement('span');span.textContent=text;
+      var span=document.createElement('span');span.textContent=txt;
       var btn=document.createElement('button');btn.type='button';btn.className='btn sm ghost';btn.textContent='复制';
-      btn.addEventListener('click',function(){copyText(text,'标题已复制');});
+      btn.addEventListener('click',function(){copyText(txt,'标题已复制');});
       div.appendChild(span);div.appendChild(btn);tList.appendChild(div);
     });
   }
+  function renderOfflineTitles(kw){renderTitleList(titleTpl.map(function(fn){return fn(kw);}),'离线模板（非 AI 生成，仅作备用）');}
+  function showTitleErr(msg){if(tErr){tErr.style.display='';tErr.textContent=msg;}}
+  function hideTitleErr(){if(tErr){tErr.style.display='none';tErr.textContent='';}}
+  function genTitles(){
+    var kw=document.getElementById('tKw').value.trim();
+    if(!kw){showToast('先输入一个关键词');document.getElementById('tKw').focus();return;}
+    hideTitleErr();
+    if(!requireLogin())return;
+    var btn=document.getElementById('tGen');btn.disabled=true;btn.textContent='AI 生成中…';
+    api('/api/generate',{method:'POST',body:{keyword:kw}}).then(function(res){
+      btn.disabled=false;btn.textContent='生成 8 条标题';
+      if(res&&res.ok&&Array.isArray(res.titles)&&res.titles.length>=8){gatewayFails=0;renderTitleList(res.titles.slice(0,8),'AI 生成 · 8 条');}
+      else{
+        gatewayFails++;
+        var msg=(res&&res.error)||'AI 服务暂不可用';
+        if(msg==='未登录'){saveSession(null);showToast('请先登录');openAuthModal();return;}
+        showTitleErr('生成失败：'+msg+'（未编造标题）');
+        showToast('生成失败：'+msg);
+        if(gatewayFails>=2){var off=document.getElementById('tOffline');if(off)off.style.display='';}
+      }
+    });
+  }
   document.getElementById('tGen').addEventListener('click',genTitles);
+  document.getElementById('tOffline').addEventListener('click',function(){
+    var kw=document.getElementById('tKw').value.trim();
+    if(!kw){showToast('先输入一个关键词');return;}
+    hideTitleErr();renderOfflineTitles(kw);
+  });
   document.getElementById('tKw').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();genTitles();}});
+
+  /* AI 站内搜索：只排资讯区卡片（#newsGrid），头条保持置顶 */
+  var newsCards=[].slice.call(document.querySelectorAll('#newsGrid .card'));
+  var newsOrigOrder=newsCards.slice();
+  function collectNewsItems(){return newsCards.map(function(card){var h=card.querySelector('h3');var p=card.querySelector('p');return{title:h?h.textContent:'',text:p?p.textContent:''};});}
+  function clearSearchHL(){newsCards.forEach(function(c){c.style.outline='';});}
+  document.getElementById('aiSearchBtn').addEventListener('click',function(){
+    var q=document.getElementById('aiSearch').value.trim();
+    if(!q){showToast('先输入要搜的问题');return;}
+    if(!requireLogin())return;
+    var hint=document.getElementById('aiSearchHint');var btn=this;btn.disabled=true;btn.textContent='搜索中…';
+    api('/api/search',{method:'POST',body:{query:q,items:collectNewsItems()}}).then(function(res){
+      btn.disabled=false;btn.textContent='AI 搜索';
+      if(res&&res.ok&&Array.isArray(res.results)){
+        var grid=document.getElementById('newsGrid');clearSearchHL();
+        res.results.forEach(function(r,i){var card=newsCards[r.index];if(!card)return;grid.appendChild(card);if(i<3)card.style.outline='2px solid var(--red)';});
+        hint.style.display='';hint.textContent='已按相关度重排，前 3 条已标红框（模式：'+(res.mode==='rerank'?'Cohere 语义重排':'关键词匹配，Cohere 不可用时网关自动退回')+'）。点「恢复原序」可还原。';
+        document.getElementById('aiSearchReset').style.display='';
+      }else{var msg=(res&&res.error)||'搜索失败';if(msg==='未登录'){saveSession(null);openAuthModal();}showToast(msg);}
+    });
+  });
+  document.getElementById('aiSearchReset').addEventListener('click',function(){
+    var grid=document.getElementById('newsGrid');clearSearchHL();
+    newsOrigOrder.forEach(function(card){grid.appendChild(card);});
+    document.getElementById('aiSearchHint').style.display='none';this.style.display='none';
+  });
+  document.getElementById('aiSearch').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('aiSearchBtn').click();}});
+
+  /* 视频脚本大纲生成器（06） */
+  document.getElementById('sGen').addEventListener('click',function(){
+    var topic=document.getElementById('sTopic').value.trim();
+    if(!topic){showToast('先输入主题');document.getElementById('sTopic').focus();return;}
+    if(!requireLogin())return;
+    var tone=document.getElementById('sTone').value;
+    var btn=this;btn.disabled=true;btn.textContent='生成中…';
+    var err=document.getElementById('sErr');err.style.display='none';
+    api('/api/script',{method:'POST',body:{topic:topic,tone:tone}}).then(function(res){
+      btn.disabled=false;btn.textContent='生成脚本大纲';
+      if(res&&res.ok&&res.script){document.getElementById('sOut').value=res.script;}
+      else{var msg=(res&&res.error)||'AI 服务暂不可用';if(msg==='未登录'){saveSession(null);openAuthModal();return;}err.style.display='';err.textContent='生成失败：'+msg+'（未编造大纲）';showToast('生成失败：'+msg);}
+    });
+  });
+  document.getElementById('sCopy').addEventListener('click',function(){var v=document.getElementById('sOut').value;if(v)copyText(v,'大纲已复制');else showToast('还没有生成大纲');});
+
+  /* 免费额度计算器（纯前端；数据与 03 节羊毛雷达一致） */
+  var FREE_CALLS=[
+    {name:'Gemini API 免费层',free:600,note:'每天 20 次请求 × 30 天'},
+    {name:'Cohere 试用 Key',free:1000,note:'每月 1,000 次调用'},
+    {name:'OpenRouter 免费模型',free:1500,note:'免费模型每天 50 次 × 30 天'},
+    {name:'Cloudflare Workers AI',free:1500,freeMax:6000,note:'每天 10,000 Neurons；保守按每次 200 Neurons ≈ 50 次/天，省着用（每次 50 Neurons）可达约 200 次/天'}
+  ];
+  var IMAGE_ROWS=[
+    {name:'Suno（音乐/歌曲）',free:'每日免费额度（张数未公开）',verdict:'无法判定，以官网为准'},
+    {name:'ChatGPT 免费版生图',free:'生图限量（张数未公开）',verdict:'无法判定，以官网为准'},
+    {name:'Gemini 免费版生图',free:'生图与编辑含在免费版（限量，未公开张数）',verdict:'无法判定，以官网为准'},
+    {name:'Midjourney',free:'无免费版',verdict:'无免费版，需付费'}
+  ];
+  document.getElementById('cCalc').addEventListener('click',function(){
+    var calls=Math.max(0,parseInt(document.getElementById('cCalls').value,10)||0);
+    var imgs=Math.max(0,parseInt(document.getElementById('cImages').value,10)||0);
+    var out=document.getElementById('cOut');var html='<table class="calc"><tr><th>项目</th><th>免费额度</th><th>你的用量</th><th>结论</th></tr>';
+    var okNames=[];
+    FREE_CALLS.forEach(function(m){
+      var cover=calls<=m.free;if(cover)okNames.push(m.name);
+      var freeTxt=m.freeMax?('约 '+m.free+'–'+m.freeMax+' 次/月'):(''+m.free+' 次/月');
+      html+='<tr><td>'+m.name+'<br><span class="hint">'+m.note+'</span></td><td>'+freeTxt+'</td><td>'+calls+' 次/月</td><td>'+(cover?'够用（$0）':'不够，超出 '+(calls-m.free)+' 次')+'</td></tr>';
+    });
+    IMAGE_ROWS.forEach(function(m){html+='<tr><td>'+m.name+'</td><td>'+m.free+'</td><td>'+imgs+' 张/月</td><td>'+m.verdict+'</td></tr>';});
+    html+='</table>';
+    html+='<p style="margin-top:12px"><b>'+(okNames.length?('免费额度够用：'+okNames.join('、')+'（均为 $0）'):'每月调用量超出全部免费层，超出部分按官网付费价计费，本站不做付费推荐')+'</b></p>';
+    html+='<p class="hint">数据来源：03 节羊毛雷达（2026 年 11 月 2–3 日核对的官方页面）；Workers AI 按每次 50–200 Neurons 估算。Kiro Free 每月 50 credits 是编程 IDE 额度，不是 API 调用次数，未计入上表。</p>';
+    out.innerHTML=html;
+  });
 
   /* pack copy buttons */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
