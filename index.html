@@ -193,7 +193,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   <!-- NEWS -->
   <section id="news">
     <div class="sec-head"><span class="no">01</span><h2>资讯速览</h2></div>
-    <p class="sec-sub">2026 年 11 月 2 日–8 日一周精选，按小新AI资讯的固定五分类整理，每条都附原始出处，点「看原文」可跳转核对。</p>
+    <p class="sec-sub">2026 年 11 月 9 日精选，按小新AI资讯的固定五分类整理，每条都附原始出处，点「看原文」可跳转核对。</p>
     <div class="filters" id="newsFilters" role="group" aria-label="资讯分类筛选">
       <button class="fbtn" data-f="all" aria-pressed="true">全部</button>
       <button class="fbtn" data-f="model" aria-pressed="false">大模型</button>
@@ -211,66 +211,76 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     <p class="hint" id="aiSearchHint" style="display:none"></p>
 
     <article class="featured" data-cat="model">
-      <span class="tag">头条 · 大模型 / 开源</span>
-      <h3>百度开源文心 5.5 Flash Base：280B 总参数、每 token 只激活 14B</h3>
-      <p>11 月 5 日发布并开源，采用稀疏 MoE 架构，在 33.5T tokens 上从零预训练，训练上下文 128K、推理支持最长 1M tokens。官方称在知识、推理、数学、代码等基准上取得同尺寸最佳成绩。注意定位：这是未经后训练的纯基座 checkpoint，是给后续训练用的起点，不是拿来直接聊天的成品。</p>
-      <a class="src" href="https://segmentfault.com/a/1190000048387146" target="_blank" rel="noopener">看原文 · SegmentFault AI 日报（11月6日）→</a>
+      <span class="tag">头条 · 大模型</span>
+      <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#d9381e;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">M</div>
+      <h3>Meta 发布智能体工作流模型 Muse Ember</h3>
+      <p>Meta 于 11 月 9 日发布智能体工作流模型 Muse Ember，通过 Meta Model API 与 Muse Code 提供。该模型旨在优化智能体在复杂任务中的协作与执行效率。</p>
+      <a class="src" href="https://superpowerdaily.com/signals/model-launches" target="_blank" rel="noopener">看原文 · Superpowerdaily（11月9日）→</a>
     </article>
 
     <div class="grid" id="newsGrid">
-      <article class="card" data-cat="model">
-        <span class="tag red">大模型</span>
-        <h3>腾讯混元 Hy4 发布，首次跻身最强开源模型之列</h3>
-        <p>11 月 4 日发布，首次引入视觉理解能力，指令遵循、长文理解、长程智能体效果大幅提升；能做细粒度图像处理、复杂图表分析和数学视觉推理。官方表示将于近期开源权重并发布模型系统卡片。</p>
-        <div class="meta"><span>11月4日</span><a href="https://tech.caijing.com.cn/20261106/5192286.shtml" target="_blank" rel="noopener">财经网 →</a></div>
-      </article>
-      <article class="card" data-cat="model">
-        <span class="tag red">大模型</span>
-        <h3>美团 LongCat-2.5：1.6 万亿参数，全程国产算力训练</h3>
-        <p>11 月 2 日发布的原生多模态模型，面向长程智能体任务，强化原生视觉理解与智能体编程；多项基准表现介于 Claude Opus 4.8 与 Opus 5 之间。官网 longcat.ai 可体验，API 同步上线。</p>
-        <div class="meta"><span>11月2日</span><a href="https://devpress.csdn.net/aibjcy/6ae9267440858c2d88180bf8.html" target="_blank" rel="noopener">CSDN 资讯日报 →</a></div>
+      <article class="card" data-cat="product">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#8a6400;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">L</div>
+        <span class="tag yel">产品工具</span>
+        <h3>LG AI Research 开放 K-EXAONE 2.5 API 免费使用</h3>
+        <p>LG AI Research 在 11 月 9 日的 NVIDIA AI Day Seoul 上宣布，K-EXAONE 2.5 API 即日起免费开放，开发者可在 EXAONE API 平台申请使用。官方称该 API 在 8 周内性能提升超过 70%，但未公布免费额度上限和截止时间。</p>
+        <div class="meta"><span>11月9日</span><a href="https://tech-insider.org/lg-ai-research-k-exaone-2-5-api-free-70-percent-nvidia-2026/" target="_blank" rel="noopener">Tech Insider →</a></div>
       </article>
       <article class="card" data-cat="product">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#8a6400;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">C</div>
         <span class="tag yel">产品工具</span>
-        <h3>OpenAI 发布 Images 2.6，生图速度提升 50%</h3>
-        <p>11 月 4 日面向全球用户开放，可在 ChatGPT、Codex 及 API 中使用；增强了多轮编辑中的细节控制，以及角色、产品、品牌元素的一致性保持。对做封面和带货图的创作者很实用。</p>
-        <div class="meta"><span>11月4日</span><a href="https://tech.caijing.com.cn/20261106/5192286.shtml" target="_blank" rel="noopener">财经网 →</a></div>
+        <h3>ChatGPT Enterprise 上架 AWS Marketplace</h3>
+        <p>OpenAI 于 11 月 9 日宣布 ChatGPT Enterprise 上架 AWS Marketplace，符合条件的机构可用现有 AWS 采购与账单关系购买和管理。官方表示，Marketplace 版与直接购买的模型、功能与发布时间一致。</p>
+        <div class="meta"><span>11月9日</span><a href="https://theitguysfix.com/2026/11/09/5-pm-technology-news-recap-claude-5-2-chatgpt-aws-disney-ai-seabed-robotics-databricks-access-november-9-2026/" target="_blank" rel="noopener">Theitguysfix →</a></div>
+      </article>
+      <article class="card" data-cat="model">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#d9381e;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">M</div>
+        <span class="tag red">大模型</span>
+        <h3>MIT 发布 WorldParticle：一个 AI 模型模拟沙、布、流体到蛋白质折叠六种物理行为</h3>
+        <p>MIT 与英属哥伦比亚大学的研究者发布了一个名为 WorldParticle 的 AI 模型，该模型使用单一 Transformer 架构统一模拟了沙、流体、布料、蛋白质折叠等六种物理行为，相关论文发表于 ACM Transactions on Graphics。</p>
+        <div class="meta"><span>11月9日</span><a href="https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109" target="_blank" rel="noopener">MIT News →</a></div>
       </article>
       <article class="card" data-cat="product">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#8a6400;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">A</div>
         <span class="tag yel">产品工具</span>
-        <h3>GPT-6 Cyber：OpenAI 的网络安全专用模型，只向获批客户开放</h3>
-        <p>可做漏洞发现与 Web 渗透测试，在 ExploitGym 上得分 48.5%，较上一代提升 51%；因能力过强被 OpenAI 列入最高「Critical」风险等级，目前仅通过 API 和 Codex 向审核通过的客户开放。</p>
-        <div class="meta"><span>11月上旬</span><a href="https://zglg.work/ai/news" target="_blank" rel="noopener">实时 AI 消息 →</a></div>
+        <h3>Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2：同一模型、两条准入路径</h3>
+        <p>Anthropic 于 11 月 9 日发布 Claude Fable 5.2 和 Claude Mythos 5.2，两者共享同一底层模型，但采用不同的安全和准入路径：Fable 面向付费订阅用户和云平台开放，而 Mythos 仅限通过 Project Glasswing 审核的网络安全与生命科学用户使用。Mythos 被官方称为最强的网络安全工程模型，API 定价低于前代。</p>
+        <div class="meta"><span>11月9日</span><a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">Llmgateway →</a></div>
       </article>
-      <article class="card" data-cat="company">
-        <span class="tag">行业公司</span>
-        <h3>Thinking Machines Lab 发布 Inkling 2 Small，下周开放权重</h3>
-        <p>前 OpenAI CTO 米拉·穆拉蒂创立的公司发布通用多模态模型：总参数 594B、激活 17B 的 MoE 架构，重点强化长时间自主执行任务、智能体编程与视觉能力；另有报道称其正洽谈新一轮融资。</p>
-        <div class="meta"><span>11月7日</span><a href="https://damodev.csdn.net/6aee8f4840858c2d88190ee0.html" target="_blank" rel="noopener">CSDN AI 日报 →</a></div>
+      <article class="card" data-cat="product">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#8a6400;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">日</div>
+        <span class="tag yel">产品工具</span>
+        <h3>日本 Stella AI 今日上线 GPT-6.1 Terra、Claude Haiku 5.5、Nano Banana 2.1 等 5 个新模型</h3>
+        <p>日本生成 AI 服务 Stella AI 于 11 月 9 日上线了包括 GPT-6.1 Terra、Claude Haiku 5.5 和 Nano Banana 2.1 在内的 5 个新模型。这些新模型涵盖了文本和图像生成领域，为用户提供了更多选择。</p>
+        <div class="meta"><span>11月9日</span><a href="https://ascii.jp/elem/000/004/449/4449720/" target="_blank" rel="noopener">ASCII.jp →</a></div>
       </article>
-      <article class="card" data-cat="company">
-        <span class="tag">行业公司</span>
-        <h3>METR 报告：Anthropic 模型能力提升速度约为此前两倍</h3>
-        <p>模型评估组织 METR 历时约 11 周的独立评估显示，截至 10 月底，Anthropic 模型执行明确任务的能力增速约为 2024 年 3 月–2025 年 10 月期间的两倍，主要归因于其广泛用 AI 辅助自身研发。</p>
-        <div class="meta"><span>11月5日 · 新华社</span><a href="http://finance.sina.com.cn/roll/2026-11-08/doc-inixyfik4181633.shtml" target="_blank" rel="noopener">新浪财经 →</a></div>
+      <article class="card" data-cat="model">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#d9381e;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">字</div>
+        <span class="tag red">大模型</span>
+        <h3>字节跳动发布图像模型 Seedream 5.5：多轮编辑与原生透明背景</h3>
+        <p>字节跳动 Seed 团队于 11 月 9 日发布图像生成模型 Seedream 5.5，该模型在多轮编辑、原生透明背景输出、画面真实感和文字渲染方面进行了改进。目前该模型已有限推送。</p>
+        <div class="meta"><span>11月9日</span><a href="https://www.nocode.mba/ai-release-tracker/2026/11" target="_blank" rel="noopener">Nocode.mba →</a></div>
       </article>
-      <article class="card" data-cat="policy">
-        <span class="tag jade">政策应用</span>
-        <h3>美国中期选举投票：44 项数据中心提案 38 项获通过</h3>
-        <p>AI 算力扩张正在变成选票议题。本轮涉及数据中心的 44 项提案中 38 项通过，地方对电网、用水和就业的态度，直接决定下一批 AI 基础设施落在哪。</p>
-        <div class="meta"><span>11月5日</span><a href="https://segmentfault.com/a/1190000048386317" target="_blank" rel="noopener">SegmentFault AI 日报 →</a></div>
-      </article>
-      <article class="card" data-cat="open">
-        <span class="tag jade">开源项目</span>
-        <h3>开源权重模型大洗牌：Kimi K3.1 Pro 领跑，Meta 推出 Muse Spark Open</h3>
-        <p>O'Reilly 11 月趋势观察：月之暗面 Kimi K3.1 Pro 成为当前领先的开源权重模型，仅略逊于前沿闭源模型，另有速度快 2–3 倍的 Highspeed 版；Meta 的 Muse Spark Open 为 816B 总参、42B 激活的 MoE 模型，权重已上 Hugging Face。</p>
-        <div class="meta"><span>11月 · 趋势观察</span><a href="https://www.oreilly.com/radar/radar-trends-to-watch-november-2026/" target="_blank" rel="noopener">O'Reilly Radar →</a></div>
+      <article class="card" data-cat="model">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#d9381e;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">I</div>
+        <span class="tag red">大模型</span>
+        <h3>Ingenix 推理模型 Thalamus Reasoning 登顶 LongevityBench，Thalamus Decision 今日开源</h3>
+        <p>波兰 Ingenix 公司宣布其 90 亿参数的 Thalamus Reasoning 模型在 LongevityBench 评测中排名第一，并于 11 月 9 日开源 Thalamus Decision 版本。该成绩为公司自报，尚未有独立复现。</p>
+        <div class="meta"><span>11月9日</span><a href="https://wisevoter.com/world/2026/11/09/ingenix-thalamus-reasoning-longevitybench-ranking" target="_blank" rel="noopener">Wisevoter →</a></div>
       </article>
       <article class="card" data-cat="open">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#1d7a5f;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">两</div>
         <span class="tag jade">开源项目</span>
-        <h3>文心 5.5 Flash Base 生态：vLLM、SGLang 已提供部署支持</h3>
-        <p>开源不只是放权重：百度已联合 vLLM、SGLang 提供生态支持，开发者可以直接用主流推理框架部署这个 280B 基座模型做微调实验，1M tokens 的推理上下文对长文档场景友好。</p>
-        <div class="meta"><span>11月5日</span><a href="https://segmentfault.com/a/1190000048387146" target="_blank" rel="noopener">SegmentFault →</a></div>
+        <h3>两人团队 Linum 发布图像生成模型 Pyramid-JiT，训练成本约 2.1 万美元，开放权重</h3>
+        <p>两人团队 Linum 发布图像生成模型 Pyramid-JiT，训练成本约 2.1 万美元，开放权重，该模型省去 VAE 压缩步骤直接处理像素，样本量约为主流模型的十一分之一，但不支持生成含文字的图片。</p>
+        <div class="meta"><span>11月9日</span><a href="https://www.digitaltoday.co.kr/cn/view/122888/pyramid-jit-image-ai-trained-for-21000-dollars-how-does-it-perform" target="_blank" rel="noopener">Digital Today →</a></div>
+      </article>
+      <article class="card" data-cat="product">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:#8a6400;color:#fff;font-family:'Noto Serif SC',serif;font-weight:900;font-size:56px;">I</div>
+        <span class="tag yel">产品工具</span>
+        <h3>InstaBox 上线每台机器费用明细查看</h3>
+        <p>InstaBox 于 11 月 9 日在官网博客发布新功能，用户现在可以查看每台机器的费用明细，包括资源用量和收费的详细拆分。</p>
+        <div class="meta"><span>11月9日</span><a href="https://instabox.sh/blog/usage-by-box.md" target="_blank" rel="noopener">Instabox.sh →</a></div>
       </article>
     </div>
     <div class="empty" id="newsEmpty">这个分类本期暂时没有条目，看看其他分类。</div>
@@ -279,8 +289,12 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   <!-- HOT_START -->
   <section id="hot">
     <div class="sec-head"><h2>抖音热点榜</h2></div>
-    <p class="sec-sub">来自每天 08:00 AI 情报简报的抖音热点与活动；规则、奖励数字以抖音 App 内话题页为准。</p>
-    <p class="hint">今日暂无</p>
+    <p class="sec-sub">2026 年 11 月 10 日简报 · 抖音热点与活动，规则、奖励数字以抖音 App 内话题页为准。</p>
+    <ol class="hot-list">
+      <li>双 11「AI 上好东西」狂欢日：11 月 7–11 日，明天收官，AI 工具类，最贴合（已报过）</li>
+      <li>齐鲁超赛决赛轮投稿：至 11 月 11 日，明天截止，可拍决赛主题 AI 创意短视频（已报过）</li>
+      <li>#2026儋州文明推荐官：至 11 月 15 日（已报过）</li>
+    </ol>
   </section>
   <!-- HOT_END -->
 
@@ -540,7 +554,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   <!-- SUBMIT PACK -->
 
   <footer>
-    <p>小新AI资讯工具站 · 本页资讯为 2026 年 11 月 8 日整理的快照，来源：SegmentFault AI 日报、财经网、CSDN 资讯日报、新浪财经（新华社）、O'Reilly Radar、BenchLeader 免费额度对照、AI Credit Radar 等公开报道；工具免费额度整理自各厂商定价页与 2026 年 10–11 月公开对比评测，政策变化快，充值或绑卡前请以官网为准。</p>
+    <p>小新AI资讯工具站 · 本页资讯为 2026 年 11 月 9 日整理的快照，来源：SegmentFault AI 日报、财经网、CSDN 资讯日报、新浪财经（新华社）、O'Reilly Radar、BenchLeader 免费额度对照、AI Credit Radar 等公开报道；工具免费额度整理自各厂商定价页与 2026 年 10–11 月公开对比评测，政策变化快，充值或绑卡前请以官网为准。</p>
   </footer>
 </main>
 
