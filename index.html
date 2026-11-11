@@ -48,9 +48,14 @@ input,select,textarea{font-family:inherit;font-size:15px;color:var(--ink)}
 .brand{font-family:"Noto Serif SC",serif;font-weight:900;font-size:19px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:9px}
 .brand .dot{width:11px;height:11px;background:var(--red);border-radius:50%;flex:none}
 .nav nav{display:flex;gap:2px;flex-wrap:nowrap;margin-left:auto;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.nav nav a{text-decoration:none;font-size:14px;font-weight:500;padding:6px 10px;border-radius:999px;color:var(--ink2);white-space:nowrap;flex:none}
+.nav nav a{text-decoration:none;font-size:13px;font-weight:500;padding:6px 8px;border-radius:999px;color:var(--ink2);white-space:nowrap;flex:none}
 .nav nav a:hover{background:var(--chip);color:var(--ink)}
 .nav nav::-webkit-scrollbar{display:none}
+.nav-scroll{flex:none;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink2);font-size:17px;line-height:1;cursor:pointer;padding:0}
+.nav-scroll:hover{background:var(--chip);color:var(--ink)}
+.nav-scroll:disabled{opacity:.3;cursor:default}
+.nav-scroll.hidden{display:none}
+.nav nav.more-right{mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 30px),transparent)}
 
 /* hero */
 .hero{padding:34px 0 8px}
@@ -168,6 +173,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   .auth-wrap{margin-left:auto}
   .auth-wrap .hint{max-width:88px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
   .nav nav{flex-basis:100%;order:3;margin-left:0;padding-bottom:2px}
+  .nav-scroll{display:none}
 }
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
@@ -176,10 +182,12 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
 
 <header class="nav"><div class="wrap nav-in">
   <a class="brand" href="#top"><span class="dot"></span>小新AI资讯工具站</a>
+  <button class="nav-scroll" id="navPrev" type="button" aria-label="向左滚动导航">‹</button>
   <nav>
     <a href="#news">资讯速览</a><a href="#tools">工具导航</a><a href="#deals">羊毛雷达</a>
     <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#hot">抖音热点</a><a href="#script">脚本大纲</a><a href="#favs">收藏夹</a><a href="#calc">额度计算器</a><a href="#wish">许愿池</a><a href="#ask">AI 问答</a><a href="#quiz">工具测验</a><a href="#aiquiz">知识测验</a><a href="#sharecard">资讯卡片</a><a href="#promptopt">提示词优化</a>
   </nav>
+  <button class="nav-scroll" id="navNext" type="button" aria-label="向右滚动导航">›</button>
   <div class="auth-wrap"><span id="authUser" class="hint" style="display:none"></span><button class="btn sm ghost" id="authBtn" type="button">登录</button><button class="btn sm ghost" id="logoutBtn" type="button" style="display:none">登出</button></div>
 </div></header>
 
@@ -998,6 +1006,27 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   setTimeout(loadWishes, 1500);
 
   /* news filter */
+  /* 顶栏导航：横向滚动按钮 + 右侧渐变提示（桌面端可点，手机端手指滑） */
+  (function () {
+    var nav = document.querySelector('.nav nav');
+    var prev = document.getElementById('navPrev');
+    var next = document.getElementById('navNext');
+    if (!nav || !prev || !next) return;
+    function update() {
+      var max = nav.scrollWidth - nav.clientWidth;
+      var can = max > 4;
+      prev.classList.toggle('hidden', !can);
+      next.classList.toggle('hidden', !can);
+      prev.disabled = nav.scrollLeft <= 0;
+      next.disabled = nav.scrollLeft >= max - 2;
+      nav.classList.toggle('more-right', can && nav.scrollLeft < max - 2);
+    }
+    prev.addEventListener('click', function () { nav.scrollBy({ left: -260, behavior: 'smooth' }); });
+    next.addEventListener('click', function () { nav.scrollBy({ left: 260, behavior: 'smooth' }); });
+    nav.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
   /* 分类 + 关键词 + 日期三者组合过滤（纯前端，不调接口） */
   var nf=document.getElementById('newsFilters');
   var newsKw=document.getElementById('newsKw');
