@@ -698,7 +698,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     opts = opts || {};
     if (GATEWAY_URL.indexOf('REPLACE-ME') > -1) return Promise.resolve({ ok: false, error: '网关尚未部署：GATEWAY_URL 待协调方填入实际地址' });
     var ctrl = new AbortController();
-    var timer = setTimeout(function () { ctrl.abort(); }, 30000);
+    var timer = setTimeout(function () { ctrl.abort(); }, 120000);
     return fetch(GATEWAY_URL + path, { method: opts.method || 'GET', headers: authHeaders(), body: opts.body ? JSON.stringify(opts.body) : undefined, signal: ctrl.signal })
       .then(function (r) { clearTimeout(timer); return r.json().catch(function () { return { ok: false, error: '网关返回异常（HTTP ' + r.status + '）' }; }); })
       .catch(function (e) { clearTimeout(timer); return { ok: false, error: (e && e.name === 'AbortError') ? '请求超时（30 秒），请重试' : '网络错误：' + ((e && e.message) || '无法连接网关') }; });
