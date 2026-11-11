@@ -44,12 +44,13 @@ input,select,textarea{font-family:inherit;font-size:15px;color:var(--ink)}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
-.nav-in{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:wrap}
+.nav-in{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:nowrap}
 .brand{font-family:"Noto Serif SC",serif;font-weight:900;font-size:19px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:9px}
 .brand .dot{width:11px;height:11px;background:var(--red);border-radius:50%;flex:none}
-.nav nav{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
-.nav nav a{text-decoration:none;font-size:14px;font-weight:500;padding:6px 10px;border-radius:999px;color:var(--ink2)}
+.nav nav{display:flex;gap:2px;flex-wrap:nowrap;margin-left:auto;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.nav nav a{text-decoration:none;font-size:14px;font-weight:500;padding:6px 10px;border-radius:999px;color:var(--ink2);white-space:nowrap;flex:none}
 .nav nav a:hover{background:var(--chip);color:var(--ink)}
+.nav nav::-webkit-scrollbar{display:none}
 
 /* hero */
 .hero{padding:34px 0 8px}
@@ -162,7 +163,11 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   .pack{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
-  .nav nav{margin-left:0}
+  .nav-in{flex-wrap:wrap;gap:8px 12px;padding:8px 0}
+  .brand{flex:1;min-width:0;font-size:17px;white-space:nowrap;overflow:hidden}
+  .auth-wrap{margin-left:auto}
+  .auth-wrap .hint{max-width:88px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+  .nav nav{flex-basis:100%;order:3;margin-left:0;padding-bottom:2px}
 }
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
