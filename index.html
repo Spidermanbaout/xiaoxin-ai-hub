@@ -7,6 +7,16 @@
 <link rel="icon" href="data:," />
 <title>小新AI资讯工具站</title>
 <meta name="description" content="小新AI资讯工具站：每天 5 分钟看懂 AI 大事——大模型、产品工具、行业公司、开源项目、政策应用五大类资讯一页看完，再加免费额度雷达、16 个 AI 工具导航和两个创作者小工具：提示词工坊、短视频选题助手。" />
+<meta property="og:title" content="小新AI资讯工具站" />
+<meta property="og:description" content="小新AI资讯工具站：每天 5 分钟看懂 AI 大事——大模型、产品工具、行业公司、开源项目、政策应用五大类资讯一页看完，再加免费额度雷达、16 个 AI 工具导航和两个创作者小工具：提示词工坊、短视频选题助手。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://xiaoxin-ai-hub-wamcexoj-workspace-6h5yoh.cloady.io/" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Spidermanbaout/xiaoxin-ai-hub@main/covers/2026-11-09-fbfb5ca33c.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="小新AI资讯工具站" />
+<meta name="twitter:description" content="小新AI资讯工具站：每天 5 分钟看懂 AI 大事——大模型、产品工具、行业公司、开源项目、政策应用五大类资讯一页看完，再加免费额度雷达、16 个 AI 工具导航和两个创作者小工具：提示词工坊、短视频选题助手。" />
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Spidermanbaout/xiaoxin-ai-hub@main/covers/2026-11-09-fbfb5ca33c.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -163,7 +173,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   <a class="brand" href="#top"><span class="dot"></span>小新AI资讯工具站</a>
   <nav>
     <a href="#news">资讯速览</a><a href="#tools">工具导航</a><a href="#deals">羊毛雷达</a>
-    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#hot">抖音热点</a><a href="#script">脚本大纲</a><a href="#calc">额度计算器</a>
+    <a href="#workshop">提示词工坊</a><a href="#titles">选题助手</a><a href="#hot">抖音热点</a><a href="#script">脚本大纲</a><a href="#favs">收藏夹</a><a href="#calc">额度计算器</a>
   </nav>
   <div class="auth-wrap"><span id="authUser" class="hint" style="display:none"></span><button class="btn sm ghost" id="authBtn" type="button">登录</button><button class="btn sm ghost" id="logoutBtn" type="button" style="display:none">登出</button></div>
 </div></header>
@@ -181,7 +191,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
         <a class="btn ghost" href="#workshop">打开提示词工坊</a>
       </div>
       <div class="stats">
-        <div class="stat"><b>10 条</b><span>本期精选资讯（11月9日–10日）</span></div>
+        <div class="stat"><b>15 条</b><span>本期精选资讯（11月9日–10日）</span></div>
         <div class="stat"><b>16 个</b><span>亲测分类的 AI 工具导航</span></div>
         <div class="stat"><b>6 项</b><span>免费额度 / 赠金情报</span></div>
         <div class="stat"><b>2 个</b><span>创作者在线小工具</span></div>
@@ -203,6 +213,16 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
       <button class="fbtn" data-f="policy" aria-pressed="false">政策应用</button>
     </div>
 
+    <div class="row" id="newsLocalFilter" style="margin-bottom:12px">
+      <input class="inp" id="newsKw" type="search" placeholder="搜本期资讯：搜标题或摘要…" aria-label="搜索本期资讯" style="flex:1;min-width:200px">
+      <select class="inp" id="newsDate" aria-label="按日期筛选" style="width:150px">
+      <option value="all">全部日期</option>
+      <option value="2026-11-09">11月9日</option>
+      <option value="2026-11-10">11月10日</option>
+      </select>
+    </div>
+    <p class="hint" id="newsCount">共 15 条，符合 10 条</p>
+
     <div class="searchbox" id="aiSearchBox">
       <input id="aiSearch" type="search" placeholder="AI 搜资讯：输入问题，如「本周有哪些免费 API」…" aria-label="AI 搜索资讯">
       <button class="btn sm" id="aiSearchBtn" type="button">AI 搜索</button>
@@ -210,7 +230,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     </div>
     <p class="hint" id="aiSearchHint" style="display:none"></p>
 
-    <article class="featured" data-cat="open">
+    <article class="featured" data-cat="open" data-date="2026-11-10">
       <span class="tag">头条 · 开源项目</span>
       <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(29,122,95,0.50) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#14503f 0%,#0a2a21 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:20px;right:20px;bottom:104px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:54px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Alpamayo 2 Edge</span><span style="position:absolute;left:20px;right:20px;bottom:64px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:700;line-height:1.4;color:rgba(255,255,255,0.92);text-shadow:0 2px 10px rgba(0,0,0,0.35);">英伟达开源自动驾驶模型 Alpamayo 2 Edge 权重</span><span style="position:absolute;left:20px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#1d7a5f;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">开源项目</span></span></div>
       <h3>英伟达开源自动驾驶模型 Alpamayo 2 Edge 权重</h3>
@@ -219,70 +239,106 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     </article>
 
     <div class="grid" id="newsGrid">
-      <article class="card" data-cat="product">
+      <article class="card" data-cat="product" data-date="2026-11-10">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">GitHub Copilot</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
         <span class="tag yel">产品工具</span>
         <h3>GitHub Copilot 接入 Anthropic 最新旗舰模型</h3>
         <p>GitHub 于 11 月 10 日宣布，Anthropic 的最新旗舰模型 Claude Fable 5.2 已全面集成到 GitHub Copilot 中，可处理跨大型代码库的多步骤复杂编码任务。同日，该模型也通过 AWS Bedrock 平台上线。</p>
         <div class="meta"><span>11月10日</span><a href="https://daily.rclabs.in/d/2026-11-10" target="_blank" rel="noopener">Daily.rclabs.in →</a></div>
       </article>
-      <article class="card" data-cat="model">
+      <article class="card" data-cat="model" data-date="2026-11-10">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Fireworks AI</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
         <span class="tag red">大模型</span>
         <h3>Fireworks AI 披露多起网络攻击：客户信息与未完成模型泄露</h3>
         <p>Fireworks AI 于 11 月 10 日披露遭遇多起网络攻击，导致客户信息和部分未完成 AI 模型泄露。两名客户向福布斯表示，因担忧安全和沟通问题，已将大量业务迁出 Fireworks AI。</p>
         <div class="meta"><span>11月10日</span><a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-tuesday-november-10-2026/" target="_blank" rel="noopener">Theneuron →</a></div>
       </article>
-      <article class="card" data-cat="model">
+      <article class="card" data-cat="model" data-date="2026-11-09">
         <img src="https://cdn.jsdelivr.net/gh/Spidermanbaout/xiaoxin-ai-hub@main/covers/2026-11-09-1634187b29.jpg" alt="" loading="lazy" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div aria-hidden="true" style="display:none;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Muse Ember</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
         <span class="tag red">大模型</span>
         <h3>Meta 发布智能体工作流模型 Muse Ember</h3>
         <p>Meta 于 11 月 9 日发布智能体工作流模型 Muse Ember，通过 Meta Model API 与 Muse Code 提供。该模型旨在优化智能体在复杂任务中的协作与执行效率。</p>
         <div class="meta"><span>11月9日</span><a href="https://superpowerdaily.com/signals/model-launches" target="_blank" rel="noopener">Superpowerdaily →</a></div>
       </article>
-      <article class="card" data-cat="product">
+      <article class="card" data-cat="product" data-date="2026-11-09">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">K-EXAONE 2.5 API</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
         <span class="tag yel">产品工具</span>
         <h3>LG AI Research 开放 K-EXAONE 2.5 API 免费使用</h3>
         <p>LG AI Research 在 11 月 9 日的 NVIDIA AI Day Seoul 上宣布，K-EXAONE 2.5 API 即日起免费开放，开发者可在 EXAONE API 平台申请使用。官方称该 API 在 8 周内性能提升超过 70%，但未公布免费额度上限和截止时间。</p>
         <div class="meta"><span>11月9日</span><a href="https://tech-insider.org/lg-ai-research-k-exaone-2-5-api-free-70-percent-nvidia-2026/" target="_blank" rel="noopener">Tech Insider →</a></div>
       </article>
-      <article class="card" data-cat="product">
+      <article class="card" data-cat="product" data-date="2026-11-09">
         <img src="https://cdn.jsdelivr.net/gh/Spidermanbaout/xiaoxin-ai-hub@main/covers/2026-11-09-fbfb5ca33c.jpg" alt="" loading="lazy" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div aria-hidden="true" style="display:none;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">ChatGPT Enterprise</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
         <span class="tag yel">产品工具</span>
         <h3>ChatGPT Enterprise 上架 AWS Marketplace</h3>
         <p>OpenAI 于 11 月 9 日宣布 ChatGPT Enterprise 上架 AWS Marketplace，符合条件的机构可用现有 AWS 采购与账单关系购买和管理。官方表示，Marketplace 版与直接购买的模型、功能与发布时间一致。</p>
         <div class="meta"><span>11月9日</span><a href="https://theitguysfix.com/2026/11/09/5-pm-technology-news-recap-claude-5-2-chatgpt-aws-disney-ai-seabed-robotics-databricks-access-november-9-2026/" target="_blank" rel="noopener">Theitguysfix →</a></div>
       </article>
-      <article class="card" data-cat="model">
+      <article class="card" data-cat="model" data-date="2026-11-09">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">WorldParticle</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
         <span class="tag red">大模型</span>
         <h3>MIT 发布 WorldParticle：一个 AI 模型模拟沙、布、流体到蛋白质折叠六种物理行为</h3>
         <p>MIT 与英属哥伦比亚大学的研究者发布了一个名为 WorldParticle 的 AI 模型，该模型使用单一 Transformer 架构统一模拟了沙、流体、布料、蛋白质折叠等六种物理行为，相关论文发表于 ACM Transactions on Graphics。</p>
         <div class="meta"><span>11月9日</span><a href="https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109" target="_blank" rel="noopener">MIT News →</a></div>
       </article>
-      <article class="card" data-cat="product">
+      <article class="card" data-cat="product" data-date="2026-11-09">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Claude Fable 5.2</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
         <span class="tag yel">产品工具</span>
         <h3>Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2：同一模型、两条准入路径</h3>
         <p>Anthropic 于 11 月 9 日发布 Claude Fable 5.2 和 Claude Mythos 5.2，两者共享同一底层模型，但采用不同的安全和准入路径：Fable 面向付费订阅用户和云平台开放，而 Mythos 仅限通过 Project Glasswing 审核的网络安全与生命科学用户使用。Mythos 被官方称为最强的网络安全工程模型，API 定价低于前代。</p>
         <div class="meta"><span>11月9日</span><a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">Llmgateway →</a></div>
       </article>
-      <article class="card" data-cat="product">
+      <article class="card" data-cat="product" data-date="2026-11-09">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Claude Haiku 5.5</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
         <span class="tag yel">产品工具</span>
         <h3>日本 Stella AI 今日上线 GPT-6.1 Terra、Claude Haiku 5.5、Nano Banana 2.1 等 5 个新模型</h3>
         <p>日本生成 AI 服务 Stella AI 于 11 月 9 日上线了包括 GPT-6.1 Terra、Claude Haiku 5.5 和 Nano Banana 2.1 在内的 5 个新模型。这些新模型涵盖了文本和图像生成领域，为用户提供了更多选择。</p>
         <div class="meta"><span>11月9日</span><a href="https://ascii.jp/elem/000/004/449/4449720/" target="_blank" rel="noopener">ASCII.jp →</a></div>
       </article>
-      <article class="card" data-cat="model">
+      <article class="card" data-cat="model" data-date="2026-11-09">
         <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">GR00T 2</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
         <span class="tag red">大模型</span>
         <h3>英伟达发布机器人基础模型 GR00T 2：看人类视频学操作</h3>
         <p>英伟达在 CoRL 会议上发布了机器人基础模型 GR00T 2，该模型基于 Cosmos 世界动作模型，能够通过观看人类第一视角视频学习操作技能。GR00T 2 在 50 个灵巧任务上，经过 5 次演示后平均成功率达到 95%，模型代码与权重预计于 12 月发布。</p>
         <div class="meta"><span>11月9日</span><a href="https://www.theneuron.ai/robotics-insider/nvidia-gr00t-2-human-video-robot-learning/" target="_blank" rel="noopener">Theneuron →</a></div>
       </article>
+      <article class="card news-extra" data-cat="model" data-date="2026-11-09" style="display:none">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Seedream 5.5</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
+        <span class="tag red">大模型</span>
+        <h3>字节跳动发布图像模型 Seedream 5.5：多轮编辑与原生透明背景</h3>
+        <p>字节跳动 Seed 团队于 11 月 9 日发布图像生成模型 Seedream 5.5，该模型在多轮编辑、原生透明背景输出、画面真实感和文字渲染方面进行了改进。目前该模型已有限推送。</p>
+        <div class="meta"><span>11月9日</span><a href="https://www.nocode.mba/ai-release-tracker/2026/11" target="_blank" rel="noopener">Nocode.mba →</a></div>
+      </article>
+      <article class="card news-extra" data-cat="model" data-date="2026-11-09" style="display:none">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(217,56,30,0.45) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#7a1f12 0%,#3d0f08 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Thalamus Reasoning</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#d9381e;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">大模型</span></span></div>
+        <span class="tag red">大模型</span>
+        <h3>Ingenix 推理模型 Thalamus Reasoning 登顶 LongevityBench，Thalamus Decision 今日开源</h3>
+        <p>波兰 Ingenix 公司宣布其 90 亿参数的 Thalamus Reasoning 模型在 LongevityBench 评测中排名第一，并于 11 月 9 日开源 Thalamus Decision 版本。该成绩为公司自报，尚未有独立复现。</p>
+        <div class="meta"><span>11月9日</span><a href="https://wisevoter.com/world/2026/11/09/ingenix-thalamus-reasoning-longevitybench-ranking" target="_blank" rel="noopener">Wisevoter →</a></div>
+      </article>
+      <article class="card news-extra" data-cat="open" data-date="2026-11-09" style="display:none">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(29,122,95,0.50) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#14503f 0%,#0a2a21 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Pyramid-JiT</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#1d7a5f;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">开源项目</span></span></div>
+        <span class="tag jade">开源项目</span>
+        <h3>两人团队 Linum 发布图像生成模型 Pyramid-JiT，训练成本约 2.1 万美元，开放权重</h3>
+        <p>两人团队 Linum 发布图像生成模型 Pyramid-JiT，训练成本约 2.1 万美元，开放权重，该模型省去 VAE 压缩步骤直接处理像素，样本量约为主流模型的十一分之一，但不支持生成含文字的图片。</p>
+        <div class="meta"><span>11月9日</span><a href="https://www.digitaltoday.co.kr/cn/view/122888/pyramid-jit-image-ai-trained-for-21000-dollars-how-does-it-perform" target="_blank" rel="noopener">Digital Today →</a></div>
+      </article>
+      <article class="card news-extra" data-cat="product" data-date="2026-11-09" style="display:none">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(201,162,39,0.40) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#6b4d0a 0%,#332505 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">InstaBox</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#c9a227;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">产品工具</span></span></div>
+        <span class="tag yel">产品工具</span>
+        <h3>InstaBox 上线每台机器费用明细查看</h3>
+        <p>InstaBox 于 11 月 9 日在官网博客发布新功能，用户现在可以查看每台机器的费用明细，包括资源用量和收费的详细拆分。</p>
+        <div class="meta"><span>11月9日</span><a href="https://instabox.sh/blog/usage-by-box.md" target="_blank" rel="noopener">Instabox.sh →</a></div>
+      </article>
+      <article class="card news-extra" data-cat="company" data-date="2026-11-09" style="display:none">
+        <div aria-hidden="true" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 85% 0%,rgba(245,185,33,0.35) 0%,rgba(0,0,0,0) 55%),linear-gradient(135deg,#2a251d 0%,#171310 100%);"><span style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 2px,rgba(255,255,255,0) 2px 14px);"></span><span style="position:absolute;right:-34px;top:-34px;width:150px;height:150px;border:1.5px solid rgba(255,255,255,0.16);border-radius:50%;"></span><span style="position:absolute;right:34px;top:26px;width:58px;height:58px;border:1.5px solid rgba(255,255,255,0.12);border-radius:50%;"></span><span style="position:absolute;left:16px;right:16px;bottom:48px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:22px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.35);">Shield AI</span><span style="position:absolute;left:16px;bottom:14px;"><span style="display:block;width:26px;height:3px;background:#f5b921;border-radius:2px;margin-bottom:8px;"></span><span style="font-size:13px;font-weight:700;letter-spacing:.22em;color:rgba(255,255,255,0.95);">行业公司</span></span></div>
+        <span class="tag">行业公司</span>
+        <h3>Shield AI 以 288 亿美元估值融资 25 亿美元，并以 53 亿美元收购 Echodyne</h3>
+        <p>AI 防务公司 Shield AI 完成 25 亿美元融资，估值达到 288 亿美元，并同时以 53 亿美元收购雷达公司 Echodyne。</p>
+        <div class="meta"><span>11月9日</span><a href="https://aitoolsrecap.com/Blog/ai-news-november-09-2026" target="_blank" rel="noopener">AI Tools Recap →</a></div>
+      </article>
     </div>
+    <div class="row" style="margin-top:14px"><button class="btn ghost" id="newsMore" type="button">显示更多资讯（还有 5 条）</button></div>
     <div class="empty" id="newsEmpty">这个分类本期暂时没有条目，看看其他分类。</div>
   </section>
 
@@ -525,10 +581,33 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
       <div class="row">
         <button class="btn red" id="sGen" type="button">生成脚本大纲</button>
         <button class="btn ghost" id="sCopy" type="button">复制大纲</button>
+        <button class="btn ghost" id="sFav" type="button">★ 收藏大纲</button>
         <span class="hint">AI 生成，需登录</span>
       </div>
       <textarea class="out" id="sOut" readonly aria-label="生成的脚本大纲" placeholder="生成的大纲会显示在这里"></textarea>
       <p class="hint" id="sErr" style="color:var(--red);display:none"></p>
+      <div class="row" style="margin-top:10px">
+        <button class="btn red" id="spGen" type="button">生成完整口播稿</button>
+        <button class="btn ghost" id="spCopy" type="button">复制口播稿</button>
+        <button class="btn ghost" id="spFav" type="button">★ 收藏口播稿</button>
+        <span class="hint" id="spMeta"></span>
+      </div>
+      <textarea class="out" id="spOut" readonly aria-label="生成的完整口播稿" placeholder="生成的完整口播稿会显示在这里（约 150–220 字，30–45 秒能念完）"></textarea>
+      <p class="hint" id="spErr" style="color:var(--red);display:none"></p>
+    </div>
+  </section>
+
+  <!-- FAVS -->
+  <section id="favs">
+    <div class="sec-head"><span class="no">07</span><h2>我的收藏</h2></div>
+    <p class="sec-sub">收藏的标题、大纲和口播稿存在本机浏览器里，刷新还在；换设备不会同步，清空浏览器数据会丢。</p>
+    <div class="panel">
+      <div class="row">
+        <button class="btn ghost sm" id="favClear" type="button">清空全部</button>
+        <span class="hint">纯前端收藏，不调接口、不登录也能用。</span>
+      </div>
+      <div class="titles" id="favList"></div>
+      <p class="hint" id="favEmpty">还没有收藏。标题后面的「★ 收藏」、大纲和口播稿旁边的收藏按钮可以把内容存到这里。</p>
     </div>
   </section>
 
@@ -698,19 +777,78 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   updateAuthUI();
 
   /* news filter */
+  /* 分类 + 关键词 + 日期三者组合过滤（纯前端，不调接口） */
   var nf=document.getElementById('newsFilters');
+  var newsKw=document.getElementById('newsKw');
+  var newsDate=document.getElementById('newsDate');
+  var newsCount=document.getElementById('newsCount');
+  var newsMore=document.getElementById('newsMore');
+  var newsExpanded=false,curCat='all';
+  function applyNewsFilter(){
+    var q=newsKw?newsKw.value.trim().toLowerCase():'';
+    var d=newsDate?newsDate.value:'all';
+    var active=(q!==''||d!=='all'||curCat!=='all');
+    var total=0,shown=0,extraTotal=0;
+    document.querySelectorAll('#news [data-cat]').forEach(function(card){
+      total++;
+      var extra=card.classList.contains('news-extra');if(extra)extraTotal++;
+      var okCat=(curCat==='all'||card.getAttribute('data-cat')===curCat);
+      var okQ=(!q||(card.textContent||'').toLowerCase().indexOf(q)>-1);
+      var okD=(d==='all'||card.getAttribute('data-date')===d);
+      var show=okCat&&okQ&&okD&&(newsExpanded||active||!extra);
+      card.style.display=show?'':'none';if(show)shown++;
+    });
+    document.getElementById('newsEmpty').style.display=shown?'none':'block';
+    if(newsCount)newsCount.textContent='共 '+total+' 条，符合 '+shown+' 条';
+    if(newsMore){
+      newsMore.style.display=(extraTotal>0&&(!active||newsExpanded))?'':'none';
+      newsMore.textContent=newsExpanded?'收起资讯':'显示更多资讯（还有 '+extraTotal+' 条）';
+    }
+  }
   nf.addEventListener('click',function(e){
     var b=e.target.closest('[data-f]');if(!b)return;
     nf.querySelectorAll('.fbtn').forEach(function(x){x.setAttribute('aria-pressed','false')});
     b.setAttribute('aria-pressed','true');
-    var f=b.getAttribute('data-f'),n=0;
-    document.querySelectorAll('#news [data-cat]').forEach(function(card){
-      var show=(f==='all'||card.getAttribute('data-cat')===f);
-      if(card.classList.contains('featured')&&f!=='all'&&card.getAttribute('data-cat')!==f){show=false;}
-      card.style.display=show?'':'none';if(show)n++;
-    });
-    document.getElementById('newsEmpty').style.display=n?'none':'block';
+    curCat=b.getAttribute('data-f');applyNewsFilter();
   });
+  if(newsKw)newsKw.addEventListener('input',applyNewsFilter);
+  if(newsDate)newsDate.addEventListener('change',applyNewsFilter);
+  if(newsMore)newsMore.addEventListener('click',function(){newsExpanded=!newsExpanded;applyNewsFilter();});
+  applyNewsFilter();
+
+  /* 收藏夹（纯前端 localStorage，不调接口、不登录也能用） */
+  var FAV_KEY='xiaoxin_favs';
+  function loadFavs(){try{var v=JSON.parse(localStorage.getItem(FAV_KEY)||'[]');return Array.isArray(v)?v:[];}catch(e){return [];}}
+  function saveFavs(list){try{localStorage.setItem(FAV_KEY,JSON.stringify(list));}catch(e){}}
+  function favLabel(type){return type==='title'?'标题':(type==='script'?'大纲':'口播稿');}
+  function addFav(type,text,topic){
+    if(!text)return;
+    var list=loadFavs();
+    if(list.some(function(f){return f.type===type&&f.text===text;})){showToast('已经收藏过了');return;}
+    list.unshift({type:type,text:text,topic:topic||'',savedAt:new Date().toISOString()});
+    saveFavs(list);renderFavs();showToast('已收藏到「我的收藏」');
+  }
+  function renderFavs(){
+    var box=document.getElementById('favList');if(!box)return;
+    var list=loadFavs();
+    var empty=document.getElementById('favEmpty');if(empty)empty.style.display=list.length?'none':'';
+    box.innerHTML='';
+    list.forEach(function(f,idx){
+      var div=document.createElement('div');div.className='title-item';
+      var meta=document.createElement('span');meta.className='hint';
+      var dd=new Date(f.savedAt);var when=isNaN(dd)?'':((dd.getMonth()+1)+'月'+dd.getDate()+'日');
+      meta.textContent='【'+favLabel(f.type)+'】'+(f.topic?(' · '+f.topic):'')+(when?(' · '+when):'');
+      var span=document.createElement('span');span.textContent=f.text;
+      var cp=document.createElement('button');cp.type='button';cp.className='btn sm ghost';cp.textContent='复制';
+      cp.addEventListener('click',function(){copyText(f.text,'已复制');});
+      var del=document.createElement('button');del.type='button';del.className='btn sm ghost';del.textContent='删除';
+      del.addEventListener('click',function(){var l=loadFavs();l.splice(idx,1);saveFavs(l);renderFavs();});
+      div.appendChild(meta);div.appendChild(span);div.appendChild(cp);div.appendChild(del);box.appendChild(div);
+    });
+  }
+  var favClear=document.getElementById('favClear');
+  if(favClear)favClear.addEventListener('click',function(){if(!loadFavs().length){showToast('收藏夹已经是空的');return;}saveFavs([]);renderFavs();showToast('已清空收藏');});
+  renderFavs();
 
   /* tools filter + search */
   var tf=document.getElementById('toolFilters'),ts=document.getElementById('toolSearch'),curTool='all';
@@ -766,18 +904,39 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
   var tList=document.getElementById('tList');
   var tErr=document.getElementById('tErr');
   var gatewayFails=0; // 网关连续失败计数；>=2 才显示离线模板按钮
-  function renderTitleList(titles,label){
+  /* 标题爆款评分（纯前端打分，不调接口）：按抖音 AI 教学类账号验证过的两条数据规律——
+     规律 1：AI 工具/热点类播放最高；规律 2：“如果……会怎样”假设类第二。 */
+  function scoreTitle(t){
+    var s=60;
+    if(/AI|人工智能|工具|热点|免费|新功能|发布|上线|模型|大模型/.test(t))s+=15;
+    if(/如果.*会怎样|假设|万一|要是/.test(t))s+=12;
+    if(/\d/.test(t))s+=8;
+    if(/99%|别|正在被取代|错|秘密|避坑|千万别|真相/.test(t))s+=6;
+    var len=t.length;
+    if(len>=8&&len<=20)s+=5;else s-=5;
+    if(/对比|VS|PK|vs/.test(t))s+=5;
+    return Math.min(100,Math.max(0,s));
+  }
+  function scoreLevel(s){return s>=85?'爆款潜力':(s>=70?'优质':'一般');}
+  function renderTitleList(titles,label,topic){
     tList.innerHTML='';
     if(label){var note=document.createElement('p');note.className='hint';note.textContent=label;tList.appendChild(note);}
-    titles.forEach(function(txt){
-      var div=document.createElement('div');div.className='title-item';
-      var span=document.createElement('span');span.textContent=txt;
-      var btn=document.createElement('button');btn.type='button';btn.className='btn sm ghost';btn.textContent='复制';
-      btn.addEventListener('click',function(){copyText(txt,'标题已复制');});
-      div.appendChild(span);div.appendChild(btn);tList.appendChild(div);
-    });
+    titles.map(function(txt){return {txt:txt,score:scoreTitle(txt)};})
+      .sort(function(a,b){return b.score-a.score;})
+      .forEach(function(item){
+        var div=document.createElement('div');div.className='title-item';
+        var span=document.createElement('span');span.textContent=item.txt;
+        var badge=document.createElement('span');
+        badge.className='tag '+(item.score>=85?'red':(item.score>=70?'yel':''));
+        badge.textContent=item.score+' · '+scoreLevel(item.score);
+        var fav=document.createElement('button');fav.type='button';fav.className='btn sm ghost';fav.textContent='★ 收藏';
+        fav.addEventListener('click',function(){addFav('title',item.txt,topic||'');});
+        var btn=document.createElement('button');btn.type='button';btn.className='btn sm ghost';btn.textContent='复制';
+        btn.addEventListener('click',function(){copyText(item.txt,'标题已复制');});
+        div.appendChild(span);div.appendChild(badge);div.appendChild(fav);div.appendChild(btn);tList.appendChild(div);
+      });
   }
-  function renderOfflineTitles(kw){renderTitleList(titleTpl.map(function(fn){return fn(kw);}),'离线模板（非 AI 生成，仅作备用）');}
+  function renderOfflineTitles(kw){renderTitleList(titleTpl.map(function(fn){return fn(kw);}),'离线模板（非 AI 生成，仅作备用）',kw);}
   function showTitleErr(msg){if(tErr){tErr.style.display='';tErr.textContent=msg;}}
   function hideTitleErr(){if(tErr){tErr.style.display='none';tErr.textContent='';}}
   function genTitles(){
@@ -788,7 +947,7 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
     var btn=document.getElementById('tGen');btn.disabled=true;btn.textContent='AI 生成中…';
     api('/api/generate',{method:'POST',body:{keyword:kw}}).then(function(res){
       btn.disabled=false;btn.textContent='生成 8 条标题';
-      if(res&&res.ok&&Array.isArray(res.titles)&&res.titles.length>=8){gatewayFails=0;renderTitleList(res.titles.slice(0,8),'AI 生成 · 8 条');}
+      if(res&&res.ok&&Array.isArray(res.titles)&&res.titles.length>=8){gatewayFails=0;renderTitleList(res.titles.slice(0,8),'AI 生成 · 8 条',kw);}
       else{
         gatewayFails++;
         var msg=(res&&res.error)||'AI 服务暂不可用';
@@ -848,6 +1007,28 @@ table.calc td,table.calc th{border-bottom:1px solid var(--line);padding:8px 6px;
       else{var msg=(res&&res.error)||'AI 服务暂不可用';if(msg==='未登录'){saveSession(null);openAuthModal();return;}err.style.display='';err.textContent='生成失败：'+msg+'（未编造大纲）';showToast('生成失败：'+msg);}
     });
   });
+  document.getElementById('spGen').addEventListener('click',function(){
+    var topic=document.getElementById('sTopic').value.trim();
+    if(!topic){showToast('先输入主题');document.getElementById('sTopic').focus();return;}
+    if(!requireLogin())return;
+    var tone=document.getElementById('sTone').value;
+    var btn=this;btn.disabled=true;btn.textContent='生成中…';
+    var err=document.getElementById('spErr');err.style.display='none';
+    var outline=document.getElementById('sOut').value;
+    var body={topic:topic,tone:tone};
+    if(outline)body.outline=outline;
+    api('/api/speech',{method:'POST',body:body}).then(function(res){
+      btn.disabled=false;btn.textContent='生成完整口播稿';
+      if(res&&res.ok&&res.speech){
+        document.getElementById('spOut').value=res.speech;
+        document.getElementById('spMeta').textContent='约 '+res.chars+' 字 · 预计 '+res.seconds+' 秒';
+      }
+      else{var msg=(res&&res.error)||'AI 服务暂不可用';if(msg==='未登录'){saveSession(null);openAuthModal();return;}err.style.display='';err.textContent='生成失败：'+msg+'（未编造口播稿）';showToast('生成失败：'+msg);}
+    });
+  });
+  document.getElementById('spCopy').addEventListener('click',function(){var v=document.getElementById('spOut').value;if(v)copyText(v,'口播稿已复制');else showToast('还没有生成口播稿');});
+  document.getElementById('sFav').addEventListener('click',function(){var v=document.getElementById('sOut').value;if(v)addFav('script',v,document.getElementById('sTopic').value.trim());else showToast('还没有生成大纲');});
+  document.getElementById('spFav').addEventListener('click',function(){var v=document.getElementById('spOut').value;if(v)addFav('speech',v,document.getElementById('sTopic').value.trim());else showToast('还没有生成口播稿');});
   document.getElementById('sCopy').addEventListener('click',function(){var v=document.getElementById('sOut').value;if(v)copyText(v,'大纲已复制');else showToast('还没有生成大纲');});
 
   /* 免费额度计算器（纯前端；数据与 03 节羊毛雷达一致） */
